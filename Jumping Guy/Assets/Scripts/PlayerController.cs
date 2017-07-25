@@ -13,7 +13,9 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Input.GetKeyDown ("up") || Input.GetMouseButtonDown (0)) {
+			updateState ("PlayerJump"); 
+		}
 	}
 
 	public void updateState(string state = null) {
