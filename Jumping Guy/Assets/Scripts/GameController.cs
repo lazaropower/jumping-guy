@@ -12,7 +12,8 @@ public class GameController : MonoBehaviour {
 	public GameObject uiIdle; 
 	public enum GameState {Idle, Playing};
 	public GameState gameState = GameState.Idle;
-	public GameObject player; 
+	public GameObject player;
+	public GameObject enemyGenerator; 
 
 	// Use this for initialization
 	void Start () {
@@ -25,7 +26,8 @@ public class GameController : MonoBehaviour {
 		if (gameState == GameState.Idle && (Input.GetKeyDown ("up") || Input.GetMouseButtonDown (0))) {
 			gameState = GameState.Playing;
 			uiIdle.SetActive (false);
-			player.SendMessage ("updateState", "PlayerRun"); 
+			player.SendMessage ("updateState", "PlayerRun");
+			enemyGenerator.SendMessage ("StartGenerator");
 		}
 		// Juego en marcha
 		else if (gameState == GameState.Playing)
