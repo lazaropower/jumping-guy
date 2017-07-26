@@ -36,7 +36,8 @@ public class GameController : MonoBehaviour {
 			player.SendMessage ("updateState", "PlayerRun");
 			enemyGenerator.SendMessage ("StartGenerator");
 			musicPlayer.Play (); 
-			InvokeRepeating ("GameTimeScale", scaleTime, scaleTime); 
+			InvokeRepeating ("GameTimeScale", scaleTime, scaleTime);
+			player.SendMessage ("DustPlay"); 
 		}
 		// Juego en marcha
 		else if (gameState == GameState.Playing)
