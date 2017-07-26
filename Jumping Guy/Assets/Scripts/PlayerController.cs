@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour {
 			updateState ("PlayerDie");
 			game.GetComponent<GameController> ().gameState = GameState.Ended;
 			enemyGenerator.SendMessage ("CancelGenerator", true);
+			game.SendMessage ("ResetTimeScale", .5f); 
 			game.GetComponent<AudioSource> ().Stop(); 
 			audioPlayer.clip = dieClip; 
 			audioPlayer.Play (); 

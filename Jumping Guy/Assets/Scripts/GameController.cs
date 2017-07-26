@@ -10,6 +10,9 @@ public class GameController : MonoBehaviour {
 
 	[Range (0f, 0.20f)]
 	public float parallaxSpeed = 0.2f; 
+	public float scaleTime = 6f; 
+	public float scaleInc = .25f;
+	public float newTimeScale = 1f; 
 	public RawImage background; 
 	public RawImage platform; 
 	public GameObject uiIdle; 
@@ -33,14 +36,17 @@ public class GameController : MonoBehaviour {
 			player.SendMessage ("updateState", "PlayerRun");
 			enemyGenerator.SendMessage ("StartGenerator");
 			musicPlayer.Play (); 
+			InvokeRepeating ("GameTimeScale", scaleTime, scaleTime); 
 		}
 		// Juego en marcha
 		else if (gameState == GameState.Playing)
 			Parallax ();
 		// Juego preparado para reiniciarse
 		else if (gameState == GameState.Ready) {
-			if (userAction)
+			if (userAction) {
 				RestartGame (); 
+				ResetTimeScale ();
+			}
 		}
 
 	}
@@ -53,5 +59,16 @@ public class GameController : MonoBehaviour {
 
 	public void RestartGame () {
 		SceneManager.LoadScene ("scene"); 
+	}
+
+	void GameTimeScale() {
+		Time.timeScale = Time.timeScale + scaleInc; 
+		Debug.Log("Ritmo incrementado " + Time.timeScale.ToString()); 
+	}
+
+	public void ResetTimeScale() {
+		CancelInvoke ("GameTimeScale"); 
+		Time.timeScale = newTimeScale;  
+		Debug.Log ("Ritmo de juego reestablecido " + Time.timeScale.ToString ()); 
 	}
 }
