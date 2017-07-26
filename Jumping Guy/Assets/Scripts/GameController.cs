@@ -15,11 +15,12 @@ public class GameController : MonoBehaviour {
 	public GameObject uiIdle; 
 	public GameState gameState = GameState.Idle;
 	public GameObject player;
-	public GameObject enemyGenerator; 
+	public GameObject enemyGenerator;
+	private AudioSource musicPlayer; 
 
 	// Use this for initialization
 	void Start () {
-
+		musicPlayer = GetComponent<AudioSource> ();
 	}
 
 	// Update is called once per frame
@@ -31,6 +32,7 @@ public class GameController : MonoBehaviour {
 			uiIdle.SetActive (false);
 			player.SendMessage ("updateState", "PlayerRun");
 			enemyGenerator.SendMessage ("StartGenerator");
+			musicPlayer.Play (); 
 		}
 		// Juego en marcha
 		else if (gameState == GameState.Playing)
