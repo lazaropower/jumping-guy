@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
 	public GameObject enemyGenerator; 
 	public AudioClip jumpClip; 
 	public AudioClip dieClip; 
+	public AudioClip pointClip; 
 	public ParticleSystem dust; 
 
 	private Animator animator; 
@@ -46,8 +47,12 @@ public class PlayerController : MonoBehaviour {
 			enemyGenerator.SendMessage ("CancelGenerator", true);
 			game.SendMessage ("ResetTimeScale", .5f);
 			DustStop (); 
-			game.GetComponent<AudioSource> ().Stop(); 
+			game.GetComponent<AudioSource> ().Stop (); 
 			audioPlayer.clip = dieClip; 
+			audioPlayer.Play (); 
+		} else if (other.gameObject.tag == "Point") {
+			game.SendMessage ("IncreasePoints");
+			audioPlayer.clip = pointClip; 
 			audioPlayer.Play (); 
 		}
 	}
