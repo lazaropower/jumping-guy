@@ -3984,6 +3984,7 @@ MonoBehaviour:
   player: {fileID: 1432452705}
   enemyGenerator: {fileID: 230042377}
   pointsText: {fileID: 427129726}
+  recordText: {fileID: 1662528337}
 --- !u!82 &1218945632
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4361,14 +4362,13 @@ GameObject:
   - component: {fileID: 1662528335}
   - component: {fileID: 1662528338}
   - component: {fileID: 1662528337}
-  - component: {fileID: 1662528336}
   m_Layer: 5
-  m_Name: Info
+  m_Name: Record
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1662528335
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4387,23 +4387,6 @@ RectTransform:
   m_AnchoredPosition: {x: 4.3, y: 71.7}
   m_SizeDelta: {x: 318, y: 173.5}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &1662528336
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1662528334}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 97ca499d14dd7424f86d80344695b931, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1662528337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4436,7 +4419,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press UP/CLICK to Play
+  m_Text: 'BEST:'
 --- !u!222 &1662528338
 CanvasRenderer:
   m_ObjectHideFlags: 0

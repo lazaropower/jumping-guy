@@ -21,12 +21,14 @@ public class GameController : MonoBehaviour {
 	public GameObject player;
 	public GameObject enemyGenerator;
 	public Text pointsText; 
+	public Text recordText; 
 	private AudioSource musicPlayer; 
 	private int points = 0; 
 
 	// Use this for initialization
 	void Start () {
 		musicPlayer = GetComponent<AudioSource> ();
+		recordText.text = "BEST: " + GetMaxScore ().ToString (); 
 	}
 
 	// Update is called once per frame
@@ -79,5 +81,17 @@ public class GameController : MonoBehaviour {
 
 	public void IncreasePoints() {
 		pointsText.text = (++points).ToString (); 
+		if (points >= GetMaxScore ()) {
+			recordText.text = "BEST: " + points.ToString (); 
+			SaveScore (points); 
+		}
+	}
+
+	public int GetMaxScore() {
+		return PlayerPrefs.GetInt ("Max Points", 0);
+	}
+
+	public void SaveScore(int currentPoints) {
+		PlayerPrefs.SetInt ("Max Points", currentPoints); 
 	}
 }
